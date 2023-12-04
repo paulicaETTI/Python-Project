@@ -43,6 +43,17 @@ def sumNumbers2odd(n):
 
 print(f"Gauss = {sumNumbers2(10)}, Even Gauss = {sumNumbers2even(10)}, Odd Gauss = {sumNumbers2odd(10)}")
 
+#EXERCITIUL 3
+def isInt():
+    try:
+        x = int(input("Insert anything = "))
+        return x
+    except ValueError:
+        return 0
+
+print(isInt())   #????? de ce nu merge fara print?
+
+
 
 
 
