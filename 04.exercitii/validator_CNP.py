@@ -61,3 +61,4 @@ if valid == True:
     print("CNP valid!")
 else:
     print("CNP invalid")
+
