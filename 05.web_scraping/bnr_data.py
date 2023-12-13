@@ -24,7 +24,6 @@ for tr_index in title[0].find_all('table'):
         if len(td_list) > 0:
             dataset.append(td_list)
 
-
 # print(dataset)
 df = pd.DataFrame(dataset)
 print(df)
