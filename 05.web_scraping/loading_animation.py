@@ -6,17 +6,17 @@ import sys
 done = False
 #here is the animation
 def animate():
-    for c in itertools.cycle(['|', '/', '-', '\\']):
+    for c in itertools.cycle(['l', 'o', 'a', 'd', 'i', 'n', 'g']):
         if done:
             break
-        sys.stdout.write('\rloading ' + c)
+        sys.stdout.write('\r' + c)
         sys.stdout.flush()
-        time.sleep(0.1)
+        time.sleep(0.2)
     sys.stdout.write('\rDone!     ')
 
 t = threading.Thread(target=animate)
 t.start()
 
 #long process here
-time.sleep(2)
+time.sleep(10)
 done = True
