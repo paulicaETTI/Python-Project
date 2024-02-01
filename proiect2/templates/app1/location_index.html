@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
+
+    <a class="btn btn-primary" href="{% url 'app1:adaugare' %}">Adaugare locatii</a>
     <table class="table">
     <thead>
         <tr>
@@ -11,13 +13,26 @@
         </tr>
     </thead>
     <tbody>
-        {% for item in locations %}
+        {% for item in location_list %}
             <tr>
                 <td>{{ forloop.counter }}</td>
                 <td>{{ item.city }}</td>
                 <td>{{ item.country }}</td>
-                <td>{{ item.active }}</td>
-                <td></td>
+                <td>
+                    {% if item.active == 0 %}
+                        Inactiv
+                    {% else %}
+                        Activ
+                    {% endif %}
+                </td>
+                <td>
+                    <a class="btn btn-success" href="{% url 'app1:modificare' item.id %}">Editare</a>
+                    {% if item.active == 0 %}
+                        <a class="btn btn-danger" href="{% url 'app1:activeaza' item.id %}">Activeaza</a>
+                    {% else %}
+                        <a class="btn btn-danger" href="{% url 'app1:dezactiveaza' item.id %}">Dezactiveaza</a>
+                    {% endif %}
+                </td>
             </tr>
         {% endfor %}
     </tbody>

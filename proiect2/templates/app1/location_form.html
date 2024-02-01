@@ -2,8 +2,11 @@
 {% block content %}
     <div class="col-md-12">
         <form method="POST">
-            {%%} # min 1:36
-            {%%}
-            {%%}
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="co-md-6">{{ field.label }} {{ field }} {{ field.errors }}</div><br>
+            {% endfor %}
+            <button type="submit" class="btn btn-success">Salveaza</button>
         </form>
     </div>
+{% endblock %}
