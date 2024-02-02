@@ -24,10 +24,10 @@ class LocationForm(forms.ModelForm):
         country_value = self.cleaned_data.get('country')
         if self.pk:
             if location.objects.filter(city__icontains=city_value, country__icontains=country_value).exclude(id=self.pk).exists():
-                self._errors['city'] = self.error_class(['Orasul si tara deja exista!'])
+                self._errors['city'] = self.error_class(['Orasul deja exista!'])
 
         else:
             if location.objects.filter(city__icontains=city_value, country__icontains=country_value).exclude(id=self.pk).exists():
-                self._errors['city'] = self.error_class(['Orasul si tara deja exista!'])
+                self._errors['city'] = self.error_class(['Orasul deja exista!'])
 
-        return self.cleaned_data # minutul 42
+        return self.cleaned_data

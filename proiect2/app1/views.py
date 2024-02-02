@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.generic import ListView, CreateView, UpdateView
@@ -7,11 +9,11 @@ from app1.models import location
 
 
 # Create your views here.
-class LocationView(ListView):
+class LocationView(LoginRequiredMixin, ListView):
     model = location
     template_name = 'app1/location_index.html'
 
-class CreateLocationView(CreateView):
+class CreateLocationView(LoginRequiredMixin, CreateView):
     model = location
     # fields = ['city', 'country']
     form_class = LocationForm
@@ -26,7 +28,7 @@ class CreateLocationView(CreateView):
         return data
 
 
-class UpdateLocationView(UpdateView):
+class UpdateLocationView(LoginRequiredMixin, UpdateView):
     model = location
     # fields = ['city', 'country']
     form_class = LocationForm
@@ -40,10 +42,12 @@ class UpdateLocationView(UpdateView):
         data.update({'pk': self.kwargs['pk']})
         return data
 
+@login_required()
 def deactivate_location(request, pk):
     location.objects.filter(id=pk).update(active=0)
     return redirect('app1:lista_locatii')
 
+@login_required()
 def activate_location(request, pk):
     location.objects.filter(id=pk).update(active=1)
     return redirect('app1:lista_locatii')

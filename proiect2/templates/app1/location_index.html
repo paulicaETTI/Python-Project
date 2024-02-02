@@ -28,9 +28,9 @@
                 <td>
                     <a class="btn btn-success" href="{% url 'app1:modificare' item.id %}">Editare</a>
                     {% if item.active == 0 %}
-                        <a class="btn btn-danger" href="{% url 'app1:activeaza' item.id %}">Activeaza</a>
+                        <a class="btn btn-light" href="{% url 'app1:activeaza' item.id %}">Activeaza</a>
                     {% else %}
-                        <a class="btn btn-danger" href="{% url 'app1:dezactiveaza' item.id %}">Dezactiveaza</a>
+                        <a class="btn btn-dark" href="{% url 'app1:dezactiveaza' item.id %}">Dezactiveaza</a>
                     {% endif %}
                 </td>
             </tr>
